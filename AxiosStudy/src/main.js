@@ -7,20 +7,39 @@ import Axios from 'axios'
 import Vuex from 'vuex'
 import ModuleA from './moudles/MoudleA'
 
-Axios.defaults.baseURL = 'https://hzmb.withbtc.cn/'
+Axios.defaults.baseURL = 'http://service.tunnel.qydev.com/ldapp'
 Axios.defaults.headers = {
   accept: 'defaults'
 }
-Axios.interceptors.request.use(function (config) {
-  // config.headers.accept = 'interceptors' 这个是追加
-  config.headers = {
-    accept: 'interceptors'
-  }
-  return config
-})
-Vue.prototype.$axios = Axios
-Vue.use(Vuex)
+Axios.interceptors.request.use(
+  request => {
+    console.log('request拦截器打印:' + '收到正确的request')
+    return request
+  },
+  error => {
+    console.log('request拦截器打印:' + '收到错误的request')
+    if (error.request) {
+      console(error)
+    }
+    return Promise.reject(error.request.data)
+  })
 
+Axios.interceptors.response.use(
+  response => {
+    console.log('response拦截器打印:' + '收到正确的response')
+    return response
+  },
+  error => {
+    console.log('response拦截器打印:' + '收到错误的response')
+    if (error.response) {
+      console('response拦截器打印:' + error)
+    }
+    return Promise.reject(error.response.data)
+  })
+
+Vue.prototype.$axios = Axios
+
+Vue.use(Vuex)
 let store = new Vuex.Store({
   modules: {
     A: ModuleA

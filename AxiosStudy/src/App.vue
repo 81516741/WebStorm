@@ -6,7 +6,8 @@
     <input v-model="this.$store.state.num">ddd<br/>
     <input v-model="this.$store.getters['A/getNums']"><br/>
     axios<br/>
-    <button @click="click">获取验证码</button><hr><br/>
+    <button @click="clickget">发起网络请求Get</button><hr><br/>
+    <button @click="clickpost">发起网络请求Post</button><hr><br/>
 
     <div>watch computer</div>
     <div>watch</div>
@@ -39,14 +40,21 @@ export default {
     alert(this.$store.state.num)
   },
   methods: {
-    click: function () {
-      this.$axios.post('admin/user/login', {
-        sign: {
-          username: 'xiaolizi',
-          password: '123456',
-          captcha: '443ng'
-        }
+    clickget: function () {
+      this.$axios.get('/webget', {
+        params: { 'sign': 'shuai qi' }
       })
+        .then(function (response) {
+          console.log(response)
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+    },
+    clickpost: function () {
+      var params = new URLSearchParams()
+      params.append('sign', 'shuai qi')
+      this.$axios.post('/webpost', params)
         .then(function (response) {
           console.log(response)
         })
