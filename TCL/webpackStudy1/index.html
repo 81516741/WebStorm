@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <!--实现inline-->
+    <script>
+        <%= compilation.assets[htmlWebpackPlugin.files.chunks.main.entry.substr(htmlWebpackPlugin.files.publicPath.length)].source() %>
+    </script>
+</head>
+<body>
+<!--排除main-->
+    <% for (var k in htmlWebpackPlugin.files.chunks) {%>
+        <% if(k !== 'main') { %>
+            <script type="text/javascript" src="<%= htmlWebpackPlugin.files.chunks[k].entry %>"></script>
+        <% } %>
+    <% } %>
+</body>
+</html>
+
+
+<!--<script type="text/javascript" src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>-->
+<!--<script type="text/javascript" src="<%= htmlWebpackPlugin.files.chunks.a.entry %>"></script>-->
+<!--<div>-->
+<!--<%= htmlWebpackPlugin.options.data %>-->
+<!--<div>options</div>-->
+<!--<% for(var key in htmlWebpackPlugin.options) { %>-->
+<!--<%= key %>:<%= htmlWebpackPlugin.options[key] %>-->
+<!--<% } %>-->
+<!--<div>files</div>-->
+<!--<% for(var key in htmlWebpackPlugin.files) { %>-->
+<!--<%= key %>:<%= htmlWebpackPlugin.files[key] %>-->
+<!--<% } %>-->
+<!--</div>-->

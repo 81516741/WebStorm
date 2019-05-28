@@ -1,0 +1,442 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+ul, ol, li {
+    list-style: none;
+}
+
+img {
+    vertical-align: middle;
+    max-width: 100%;
+    border: 0px;
+}
+
+/* ios解决滑动问题 */
+*, *:after, *:before {
+    -webkit-overflow-scrolling: touch;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/*左右间距为30px的外层容器*/
+.container {
+    overflow: hidden;
+    margin: 0px 30px
+}
+
+/*取消的样式*/
+.cancel {
+    position: absolute;
+    top: 14px;
+    right: 0px;
+    font-family: PingFangSC-Regular;
+    font-size: 28px;
+    color: #333333;
+}
+
+/*更多的样式*/
+.more {
+    background: url("../image/more.png") no-repeat right center;
+    background-size: 7px 13px;
+    float: right;
+    margin-top: 4px;
+    padding-right: 12px;
+    font-family: PingFangSC-Regular;
+    font-size: 23px;
+    color: #999999;
+    font-weight: normal;
+}
+
+/*搜索栏的样式*/
+.search_bar {
+    padding-left: 100px;
+    height: 66px;;
+    width: 602px;
+    border-radius: 33px;
+    font-family: PingFangSC-Medium;
+    font-size: 28px;
+    color: #333333;
+    background-color: #f3f3f3;
+    border: none;
+}
+
+/*单曲名或者专辑名，超出一定宽度将显示省略号*/
+.track_or_album_title {
+    width: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: 5px;
+    font-family: PingFangSC-Regular;
+    font-size: 23px;
+    color: #333333;
+}
+
+/*作者（歌手等），超出一定宽度将显示省略号*/
+.author {
+    width: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: PingFangSC-Regular;
+    font-size: 18px;
+    color: #666666;
+}
+
+/*频道页面的标题*/
+.page_title {
+    text-align: center;
+    line-height: 88px;
+    font-family: PingFangSC-Medium;
+    font-size: 36px;
+    color: #333333;
+    font-weight: bold;
+}
+
+/*频道页面返回图标*/
+.icon_back {
+    width: 16px;
+    height: 27px;
+    position: absolute;
+    left: 30px;
+    top: 30px;
+}
+
+/*由于引入了lib-flexible插件做移动端的适配，而vux组件本身已经做了适配，就会造成引入的vux组件被‘二次适配’，所以我们要重写vux组件的某些样式进行覆盖(!important强制覆盖)从而保证只适配一次*/
+/*改变搜索页默认的tab样式*/
+.vux-tab {
+    height: 55px !important;
+}
+
+/*消除tab-container的多余隐藏*/
+.vux-tab-container {
+    overflow: visible !important;
+}
+
+/*改变搜索页默认的tab-item的样式*/
+.vux-tab .vux-tab-item {
+    padding-bottom: 50px !important;
+    background-size: 100% 2px !important;
+    font-weight: 400;
+    font-family: PingFangSC-Regular !important;
+    font-size: 30px !important;
+    color: #666666 !important;
+}
+
+/*改变搜索页被选中的tab-item的样式*/
+.vux-tab .vux-tab-item.vux-tab-selected {
+    font-weight: 500 !important;
+    font-family: PingFangSC-Medium !important;
+    color: black !important;
+}
+
+/*改变搜索页tab底部的滑块tab-bar的样式*/
+.vux-tab-ink-bar {
+    bottom: 0px !important;
+    height: 8px !important;
+    border-radius: 4px !important;
+    background-color: #e60012 !important;
+}
+
+/*当tab过多可以滑动时，改变默认轨道样式*/
+.scrollable {
+    padding-bottom: 0px !important;
+}
+
+/*分页机制上拉加载更多的样式*/
+/*改变加载更多的样式*/
+.weui-loadmore {
+    width: 100% !important;
+    font-size: 23px !important;
+}
+
+.weui-loading {
+    width: 35px !important;
+    height: 35px !important;
+}
+
+/*主页和技能页banner*/
+/*改变swiper的样式*/
+.vux-slider {
+    padding-bottom: 29px !important;
+}
+
+/*改变提示点的位置*/
+.vux-slider > .vux-indicator, .vux-slider .vux-indicator-right {
+    right: 355px !important;
+    bottom: 0px !important;
+}
+
+/*改变提示点间距*/
+.vux-slider > .vux-indicator > a, .vux-slider .vux-indicator-right > a {
+    margin-left: 10px !important;
+}
+
+/*改变默认提示点的样式*/
+.vux-slider > .vux-indicator > a > .vux-icon-dot, .vux-slider .vux-indicator-right > a > .vux-icon-dot {
+    background-color: black !important;
+}
+
+/*改变选中提示点的样式*/
+.vux-slider > .vux-indicator > a > .vux-icon-dot.active, .vux-slider .vux-indicator-right > a > .vux-icon-dot.active {
+    background-color: #e60012 !important;
+}
+
+/*改变播放列表的背景色和不透明度*/
+.vux-popup-dialog {
+    background-color: #000000 !important;
+    opacity: 0.85 !important;
+}
+
+/*频道页节目时间轴vux组件样式*/
+/*时间轴内边距更改*/
+.vux-timeline {
+    padding: 0 0 0 120px !important;
+}
+
+/*时间轴圆点的背景色更改*/
+.vux-timeline-item-color {
+    background-color: #dddddd !important;
+}
+
+/*时间轴竖线样式更改*/
+.vux-timeline-item-tail {
+    left: 4px !important;
+    top: 38px !important;
+    background-color: #dddddd !important;
+}
+
+/*时间轴第一个圆点的大小更改*/
+.vux-timeline-item-head-first {
+    width: 14px !important;
+    height: 14px !important;
+    left: -3px !important;
+    top: 38px !important;
+}
+
+/*不显示第一个圆点的默认勾号*/
+.weui-icon-success-no-circle {
+    display: none !important;
+}
+
+/*时间轴其他圆点的样式更改*/
+.vux-timeline-item-head {
+    width: 14px !important;
+    height: 14px !important;
+    left: -3px !important;
+    top: 38px !important;
+}
+
+/*填充的内容样式更改*/
+.vux-timeline-item-content {
+    padding: 0 0 50px 50px !important;
+}
+
+/*填充的最后一行内容样式更改*/
+.vux-timeline > ul > li:last-child .vux-timeline-item-content {
+    padding-bottom: 0 !important;
+}
+
+/*频道详情和编辑页复用的时间轴*/
+.time_line {
+    position: absolute;
+    top: 88px;
+    bottom: 184px;
+    overflow: auto;
+    margin-top: 30px;
+}
+
+.programme::before {
+    position: absolute;
+    left: 10px;
+    top: 44px;
+    content: '';
+    width: 40px;
+    height: 2px;
+    background: #dddddd;
+}
+
+.programme {
+    width: 490px;
+    height: 90px;
+    padding: 8px;
+    font-family: PingFangSC-Regular;
+    font-size: 30px;
+    color: #333333;
+    border: 1Px solid #dddddd;
+    border-radius: 46px;
+}
+
+.programme p {
+    position: absolute;
+    left: -92px;
+    top: 28px;
+    font-family: PingFangSC-Regular;
+    font-size: 30px;
+    color: #666666;
+}
+
+.programme img {
+    width: 71px;
+    height: 70px;
+    margin-left: 5px;
+    margin-right: 15px;
+    border-radius: 50%;
+}
+
+/*选择时间公用样式*/
+.select_time {
+    position: absolute;
+    top: 258px;
+    left: 30px;
+    font-family: PingFangSC-Light;
+    font-size: 28px;
+    color: #333333;
+}
+
+/*：号公用样式*/
+.select_time span {
+    position: relative;
+    top: -2px;
+    margin-left: 225px;
+    font-weight: bold;
+}
+
+/*选择节目公用样式*/
+.select_programme {
+    padding-right: 31px;
+    line-height: 88px;
+    border-top: 1Px solid #dddddd;
+    border-bottom: 1Px solid #dddddd;
+    font-family: PingFangSC-Regular;
+    font-size: 32px;
+    color: #333333;
+}
+
+/*默认选中节目公用样式*/
+.programme_name {
+    float: right;
+}
+
+/*选择节目中的右边箭头样式*/
+.select_programme img {
+    position: relative;
+    left: 445px;
+    width: 11px;
+    height: 19px;
+    margin-bottom: 5px;
+}
+
+/*频道页的按钮容器样式*/
+.button_container {
+    position: absolute;
+    bottom: 56px;
+}
+
+/*频道页的按钮基础样式*/
+.channel_button {
+    margin-top: 40px;
+    padding: 20px;
+    text-align: center;
+    display: inline-block;
+    height: 88px;
+    font-family: PingFangSC-Medium;
+    font-size: 32px;
+    color: #333333;
+    border: 1Px solid #dddddd;
+    border-radius: 44px;
+}
+
+/*频道编辑页的确定删除弹窗*/
+/*遮罩不透明度为0.2*/
+.weui-mask {
+    background-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+/*更改弹窗的宽度*/
+.weui-dialog {
+    max-width: 496px !important;
+    height: 276px !important;
+}
+
+/*弹窗标题区域*/
+.weui-dialog__hd {
+    padding: 70px 0 37px !important;
+}
+
+/*弹窗标题*/
+.weui-dialog__title {
+    font-family: PingFangSC-Regular !important;
+    font-size: 32px !important;
+}
+
+/*弹窗按钮区域*/
+.weui-dialog__ft {
+    line-height: 88px !important;
+    font-family: PingFangSC-Medium !important;
+    font-size: 30px !important;
+}
+
+/*弹窗按钮颜色*/
+.weui-dialog__btn_default, .weui-dialog__btn_primary {
+    color: #1b87ff !important;
+}
+
+/*编辑节目页的时间表*/
+/*时间表容器*/
+.dp-content {
+    padding: 0 !important;
+}
+
+/*时间表滚动窗口*/
+.scroller-component {
+    height: 330px !important;
+    margin: 30px 0 !important;
+}
+
+/*渐变遮罩*/
+.scroller-mask {
+    background-size: 100% 132px !important;
+}
+
+/*选中的某行时间*/
+.scroller-indicator {
+    height: 66px !important;
+    top: 128px !important;
+    border-top: 1Px solid #dddddd !important;
+    border-bottom: 1Px solid #dddddd !important;
+}
+
+/*时间表中的一行时间*/
+.scroller-item {
+    height: 66px !important;
+    line-height: 66px !important;
+    font-family: PingFangSC-Light !important;
+    font-size: 36px !important;
+}
+
+/*时间表-小时*/
+.dp-item[data-role=hour] .scroller-content {
+    padding-left: 220px !important;
+}
+
+/*时间表-分钟*/
+.dp-item[data-role=minute] .scroller-content {
+    padding-right: 220px !important;
+}
+
+/*闹钟首页的左滑删除*/
+/*设置圆角*/
+.vux-swipeout-button-warn{
+    width: 135px!important;
+    background-color: #e60012!important;
+    border-radius: 10px!important;
+    font-size: 32px!important;
+}

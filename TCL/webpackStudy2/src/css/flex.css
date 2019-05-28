@@ -1,0 +1,23 @@
+
+.flex-div {
+    display: flex;
+    width: 100%;
+    height: 300px;
+}
+
+@media screen and (max-width: 1500px) {
+    .flex-div {
+        background-color: rebeccapurple;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .flex-div {
+        background-color: blue;
+    }
+}
+@media screen and (max-width: 500px) {
+    .flex-div {
+        background-color: yellow;
+    }
+}

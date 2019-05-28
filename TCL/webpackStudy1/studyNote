@@ -1,0 +1,16 @@
+全局安装
+npm install webpack -g
+局部安装
+npm install webpack --save-dev
+
+全局安装
+npm i webpack-cli -g
+
+初始化项目
+npm init
+
+打包  后面可以加参数  --progress --display-modules --display-reasons --watch
+webpack hello.js --output hello.bundle.js --mode development
+
+打包为css指定loader   这段指令用于[初次学习]文件夹
+webpack hello.js --output hello.bundle.js --mode development  --module-bind 'css=style-loader!css-loader'
